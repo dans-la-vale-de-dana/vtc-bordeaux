@@ -555,8 +555,8 @@ footer{ background: var(--bg-alt); border-top: 1px solid var(--line); padding: 3
 @media (max-width: 980px){
   .main-nav, .header-cta{ display:none; }
   .burger{ display:flex; }
-  .hero{ min-height:auto; }
-  .hero-inner{ padding-top: 130px; padding-bottom:64px; }
+  .hero{ min-height:auto; height:auto; overflow-x:hidden; overflow-y:visible; }
+  .hero-inner{ padding-top: 130px; padding-bottom:64px; grid-template-columns: minmax(0, 1fr); }
 }
 
 </style>
