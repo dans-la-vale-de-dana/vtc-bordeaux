@@ -425,11 +425,12 @@ p{ margin:0; color: var(--ink-soft); }
 .field label span.label-main{ text-transform:uppercase; font-weight:600; }
 .field input, .field textarea{
   border: 1px solid rgba(255,255,255,.55); border-radius: 8px; padding: 11px 13px;
-  font-family: var(--font-body); font-size: .95rem; color: var(--ink); background: rgba(255,255,255,.82);
+  font-family: var(--font-body); font-size: .95rem; color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 38%, white 62%);
   transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 .field textarea{ resize: vertical; min-height: 52px; }
-.field input:focus, .field textarea:focus{ outline:0; border-color:rgba(255,255,255,.9); background:rgba(255,255,255,.96); box-shadow:0 0 0 3px rgba(255,255,255,.35); }
+.field input:focus, .field textarea:focus{ outline:0; border-color:rgba(255,255,255,.9); background: color-mix(in srgb, var(--accent) 22%, white 78%); box-shadow:0 0 0 3px rgba(255,255,255,.35); }
 .form-note{ font-size:.78rem; color: rgba(23,21,15,.65); text-align:center; margin-top: 2px; }
 
 /* ---------- Sections génériques ---------- */
@@ -495,8 +496,8 @@ section > .wrap > h2{ max-width: 640px; }
 .services-grid-compact .service-item p{ font-size:.82rem; margin-top:4px; }
 .service-item{ padding: 22px 20px; background: var(--white); border-radius: var(--radius); border: 1px solid var(--line); transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease, background .4s ease; }
 .service-item:hover{ box-shadow: var(--shadow); transform: translateY(-4px); border-color: var(--accent); }
-.service-item:nth-child(odd){ background: color-mix(in srgb, var(--accent) 13%, var(--white) 87%); border-color: color-mix(in srgb, var(--accent) 32%, var(--line) 68%); }
-.service-item:nth-child(even){ background: var(--bg-alt); }
+.service-item:nth-child(odd){ background: color-mix(in srgb, var(--wine) 16%, var(--white) 84%); border-color: color-mix(in srgb, var(--wine) 34%, var(--line) 66%); }
+.service-item:nth-child(even){ background: color-mix(in srgb, var(--accent) 13%, var(--white) 87%); border-color: color-mix(in srgb, var(--accent) 32%, var(--line) 68%); }
 .service-item p{ margin-top:8px; font-size:.9rem; }
 
 /* ---------- Excursions & galerie ---------- */
