@@ -493,8 +493,10 @@ section > .wrap > h2{ max-width: 640px; }
 .services-grid-compact .service-item{ padding:16px 16px; }
 .services-grid-compact .service-item h3{ font-size:1rem; }
 .services-grid-compact .service-item p{ font-size:.82rem; margin-top:4px; }
-.service-item{ padding: 22px 20px; background: var(--white); border-radius: var(--radius); border: 1px solid var(--line); transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease; }
+.service-item{ padding: 22px 20px; background: var(--white); border-radius: var(--radius); border: 1px solid var(--line); transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease, background .4s ease; }
 .service-item:hover{ box-shadow: var(--shadow); transform: translateY(-4px); border-color: var(--accent); }
+.service-item:nth-child(odd){ background: color-mix(in srgb, var(--accent) 13%, var(--white) 87%); border-color: color-mix(in srgb, var(--accent) 32%, var(--line) 68%); }
+.service-item:nth-child(even){ background: var(--bg-alt); }
 .service-item p{ margin-top:8px; font-size:.9rem; }
 
 /* ---------- Excursions & galerie ---------- */
@@ -925,7 +927,7 @@ footer{ background: var(--bg-alt); border-top: 1px solid var(--line); padding: 3
       </article>
     </div>
 
-    <p class="eyebrow reveal" style="margin-top:38px" data-i18n="services.eyebrow">Nos trajets</p>
+    <p class="eyebrow reveal" style="margin-top:38px" data-i18n="services.eyebrow">Prestations, particuliers et professionnels</p>
     <div class="services-grid services-grid-compact" id="services">
       <div class="service-item reveal">
         <h3 data-i18n="service1.title">Aéroport &amp; gare</h3>
@@ -1488,7 +1490,7 @@ const I18N = {
     'fleet.berline.desc':"Up to 4 passengers, 3 suitcases. Ideal for airport transfers, train stations and business meetings.",
     'fleet.van.tag':'Up to 7 passengers','fleet.van.title':'Van',
     'fleet.van.desc':"Up to 7 passengers with luggage. Perfect for families, groups and vineyard excursions.",
-    'services.eyebrow':'Our rides',
+    'services.eyebrow':'Services, private & business',
     'service1.title':'Airport & train station','service1.desc':"Pickup at Bordeaux-Mérignac airport and Saint-Jean train station.",
     'service2.title':'Long distance','service2.desc':"Any destination, departing from or arriving in Bordeaux.",
     'service3.title':'Chauffeur at your disposal','service3.desc':"Your driver stays at your disposal throughout your outing: château visits, restaurants, or other stops.",
@@ -1532,7 +1534,7 @@ const I18N = {
     'fleet.berline.desc':"Hasta 4 pasajeros, 3 maletas. Ideal para traslados al aeropuerto, estación y citas profesionales.",
     'fleet.van.tag':'Hasta 7 pasajeros','fleet.van.title':'Furgoneta',
     'fleet.van.desc':"Hasta 7 pasajeros con equipaje. Perfecta para familias, grupos y excursiones por el viñedo.",
-    'services.eyebrow':'Nuestros trayectos',
+    'services.eyebrow':'Servicios, particulares y profesionales',
     'service1.title':'Aeropuerto y estación','service1.desc':"Recogida en el aeropuerto de Burdeos-Mérignac y en la estación Saint-Jean.",
     'service2.title':'Larga distancia','service2.desc':"Cualquier destino, con salida o llegada en Burdeos.",
     'service3.title':'Chófer a su disposición','service3.desc':"Su chófer permanece a su disposición durante todo su recorrido: visitas a châteaux, restaurantes u otras paradas.",
