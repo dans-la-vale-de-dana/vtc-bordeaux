@@ -418,6 +418,17 @@ p{ margin:0; color: var(--ink-soft); }
   margin-bottom:4px;
   color: var(--ink);
 }
+.booking-toggle summary{
+  cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.booking-toggle summary::-webkit-details-marker{ display:none; }
+.booking-toggle summary h2{ margin-bottom:0; }
+.booking-toggle summary::after{
+  content:"+"; font-size:1.6rem; font-weight:300; line-height:1; color: var(--ink);
+  transition: transform .3s ease; flex-shrink:0;
+}
+.booking-toggle[open] summary::after{ transform: rotate(135deg); }
+.booking-fields{ display:flex; flex-direction:column; gap:11px; margin-top:16px; }
 .form-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .field{ display:flex; flex-direction:column; gap:6px; }
 .field label{ font-size:.78rem; font-weight:600; color: rgba(23,21,15,.7); text-transform:uppercase; letter-spacing:.04em; }
@@ -854,45 +865,52 @@ footer{ background: var(--bg-alt); border-top: 1px solid var(--line); padding: 3
     </div>
 
     <form class="booking-card" id="bookingForm" aria-labelledby="reserver">
-      <h2 id="reserver" data-i18n="booking.title">Demandez un devis</h2>
-      <div class="field">
-        <label for="trajet" data-i18n="booking.trajet">Trajet</label>
-        <input type="text" id="trajet" name="trajet" placeholder="Aéroport Mérignac → Centre-ville Bordeaux" data-i18n-placeholder="booking.trajet.ph" required>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label for="date" data-i18n="booking.date">Date</label>
-          <input type="date" id="date" name="date">
+      <details class="booking-toggle" id="bookingToggle">
+        <summary>
+          <h2 id="reserver" data-i18n="booking.title">Demandez un devis</h2>
+        </summary>
+        <div class="booking-fields">
+          <div class="field">
+            <label for="trajet" data-i18n="booking.trajet">Trajet</label>
+            <input type="text" id="trajet" name="trajet" placeholder="Aéroport Mérignac → Centre-ville Bordeaux" data-i18n-placeholder="booking.trajet.ph" required>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="date" data-i18n="booking.date">Date</label>
+              <input type="date" id="date" name="date">
+            </div>
+            <div class="field">
+              <label for="heure" data-i18n="booking.heure">Heure</label>
+              <input type="time" id="heure" name="heure">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="nom" data-i18n="booking.nom">Nom</label>
+              <input type="text" id="nom" name="nom" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="tel" data-i18n="booking.tel">Téléphone</label>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message"><span class="label-main" data-i18n="booking.precisions">Précisions</span> <span data-i18n="booking.optional">(optionnel)</span></label>
+            <textarea id="message" name="message" placeholder="Passagers, bagages, véhicule souhaité..." data-i18n-placeholder="booking.message.ph"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-whatsapp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.14-1.32A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.08-1.12l-.29-.17-3.05.78.82-2.97-.19-.3A8 8 0 1 1 12 20zm4.4-5.8c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41-.14 0-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.43-.58 1.63-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+            <span data-i18n="booking.submit">Envoyer via WhatsApp</span>
+          </button>
+          <p class="form-note" data-i18n="booking.note">Réponse rapide, 7j/7. Aucun compte à créer.</p>
         </div>
-        <div class="field">
-          <label for="heure" data-i18n="booking.heure">Heure</label>
-          <input type="time" id="heure" name="heure">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label for="nom" data-i18n="booking.nom">Nom</label>
-          <input type="text" id="nom" name="nom" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="tel" data-i18n="booking.tel">Téléphone</label>
-          <input type="tel" id="tel" name="tel" autocomplete="tel" required>
-        </div>
-      </div>
-      <div class="field">
-        <label for="message"><span class="label-main" data-i18n="booking.precisions">Précisions</span> <span data-i18n="booking.optional">(optionnel)</span></label>
-        <textarea id="message" name="message" placeholder="Passagers, bagages, véhicule souhaité..." data-i18n-placeholder="booking.message.ph"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block btn-whatsapp">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.14-1.32A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.08-1.12l-.29-.17-3.05.78.82-2.97-.19-.3A8 8 0 1 1 12 20zm4.4-5.8c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41-.14 0-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.43-.58 1.63-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
-        <span data-i18n="booking.submit">Envoyer via WhatsApp</span>
-      </button>
-      <p class="form-note" data-i18n="booking.note">Réponse rapide, 7j/7. Aucun compte à créer.</p>
+      </details>
     </form>
   </div>
 </section>
 
 <!-- ================= FLOTTE ================= -->
+
 <section id="flotte" style="position:relative; overflow:hidden;">
   <div class="wrap">
     <p class="eyebrow reveal" data-i18n="fleet.eyebrow">Notre flotte</p>
@@ -1441,6 +1459,20 @@ document.querySelectorAll('.faq-item').forEach(item => {
 // qu'il faudra ajouter l'appel à l'API pour créer la réservation et déclencher
 // le paiement, en complément ou à la place de l'ouverture WhatsApp actuelle.
 const WHATSAPP_NUMBER = '33766354088';
+
+// --- Ouvre automatiquement le formulaire de devis quand on clique sur un lien
+// "Demandez un devis" (#reserver) situé ailleurs sur le site (header, footer, menu mobile) ---
+const bookingToggle = document.getElementById('bookingToggle');
+function openBookingToggle(){
+  if (bookingToggle && !bookingToggle.open) bookingToggle.open = true;
+}
+document.querySelectorAll('a[href="#reserver"]').forEach(link => {
+  link.addEventListener('click', openBookingToggle);
+});
+if (window.location.hash === '#reserver') openBookingToggle();
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#reserver') openBookingToggle();
+});
 
 const bookingForm = document.getElementById('bookingForm');
 if (bookingForm) {
